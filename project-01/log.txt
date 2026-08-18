@@ -79,3 +79,13 @@
 1786034680729 : GET : /
 1786034688619 : GET : /api/users
 1786034688676 : GET : /favicon.ico
+1787075946028 : GET : /api/users
+1787075956127 : GET : /api/users
+1787075972711 : POST : /api/users
+1787076001736 : POST : /api/users
+1787076016862 : PATCH : /api/users/6a736ec4ba91c7e80937f8fc
+1787076028124 : DELETE : /api/users/6a736ec4ba91c7e80937f8fc
+1787076602847 : POST : /api/users
+1787076616448 : GET : /api/users
+1787076622994 : DELETE : /api/users/6a849ffa7a8f702f939d1979
+1787076626443 : GET : /api/users
