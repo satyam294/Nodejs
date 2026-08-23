@@ -14,7 +14,9 @@ async function generateNewShortUrl(req, res) {
     visitHistory: [],
   });
 
-  res.status(200).json({id: shortId});
+  return res.render("home", {
+    id: shortId,
+  });
 }
 
 async function getShortUrl(req, res) {
@@ -49,9 +51,18 @@ async function getAnalytics(req, res) {
   });
 }
 
+async function getAllUsers (req, res) {
+  const allUrls = await URL.find({});
+  // render the appropriate view using ejs
+  return res.render("home", {
+    urls: allUrls,
+  });
+}
+
 
 module.exports = {
   generateNewShortUrl,
   getShortUrl,
   getAnalytics,
+  getAllUsers,
 }
