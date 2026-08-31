@@ -11,12 +11,11 @@ async function generateNewShortUrl(req, res) {
   await URL.create({
     shortUrl: shortId,
     redirectUrl: url,
+    createdBy: req.user._id,
     visitHistory: [],
   });
 
-  return res.render("home", {
-    id: shortId,
-  });
+  return res.redirect(`/?shortId=${shortId}`);
 }
 
 async function getShortUrl(req, res) {
