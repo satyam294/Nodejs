@@ -25,7 +25,19 @@ async function checkAuth(req, res, next) {
   next(); 
 }
 
+function restrictTo(roles) {
+  async function authorization(req, res, next) {
+    const user = req.user;
+    if(!user || !roles.includes(user.role)) 
+      return res.redirect("/?error=" + encodeURIComponent("Unauthorized access"));
+  
+    next();  // allowed roles contains current user's roles
+  }
+  return authorization;
+}
+
 module.exports = {
   forceAuth,
   checkAuth,
+  restrictTo,
 }

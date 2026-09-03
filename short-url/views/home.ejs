@@ -26,6 +26,9 @@
     th {
       background-color: #f2f2f2;
     }
+    .error-message {
+      color: rgb(228, 6, 6);
+    }
   </style>
 </head>
 
@@ -35,6 +38,12 @@
   <% if (locals.shortId) { %>
   <p>Short Url: http://localhost:8000/url/<%= shortId %></p>
   <% } %>
+
+  <div class="error-message">
+    <% if (locals.error) { %>
+    <p><%= error %></p>
+    <% } %>
+  </div>
 
   <div class="form">
     <form method="post" action="/url">

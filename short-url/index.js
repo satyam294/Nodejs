@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const { connectDb } = require("./connectors/database");
 const cookieParser = require("cookie-parser");
-const { forceAuth, checkAuth } = require("./middleware/auth")
+const { forceAuth, checkAuth, restrictTo } = require("./middleware/auth")
 
 const { urlRouter } = require("./routers/url");
 const { staticRouter } = require("./routers/static");
@@ -25,6 +25,6 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser())
 
 // routes
-app.use('/url', forceAuth, urlRouter);
+app.use('/url', forceAuth, restrictTo(["NORMAL"]), urlRouter);
 app.use('/user', userRouter);
 app.use('/', checkAuth, staticRouter);

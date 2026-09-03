@@ -9,11 +9,13 @@ router.get('/', async (req, res) => {
   if(!user) return res.redirect("/login");
 
   const shortId = req.query.shortId;
+  const error = req.query.error;
 
   const UserUrls = await URL.find({createdBy: user._id});
   return res.render("home", {
     urls: UserUrls,
     shortId: shortId || null,
+    error: error || null,
   });
 });
 
